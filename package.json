@@ -1,0 +1,24 @@
+{
+  "name": "immu-func",
+  "version": "0.0.1",
+  "description": "Effective functions to keep data structure immutable",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha --reporter=nyan"
+  },
+  "keywords": [
+    "immutable",
+    "functional",
+    "persistent",
+    "datastructure"
+  ],
+  "author": "clitetailor",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
