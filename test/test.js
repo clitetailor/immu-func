@@ -4,21 +4,23 @@ should = should();
 
 describe('#setIn()', function () {
 
-	it('should return correct result', function () {
-		let target = {
-				a: [1, { c: 4 }, 5],
-				b: 'what is this?'
-			},
-			keys = ['a', 1, 'c'],
-			source = 1000,
-			expectResult = {
-				a: [1, { c: 1000 }, 5],
-				b: 'what is this?'
-			}
+	describe('normal test', function () {
+		it('should return correct result', function () {
+			
+			let target = {
+					a: [1, { c: 4 }, 5],
+					b: 'what is this?'
+				},
+				keys = ['a', 1, 'c'],
+				source = 1000,
+				expectResult = {
+					a: [1, { c: 1000 }, 5],
+					b: 'what is this?'
+				}
 
-		expect(setIn(target, keys, source)).to.deep.equal(expectResult);
+			expect(setIn(target, keys, source)).to.deep.equal(expectResult);
+		})
 	})
-
 
 	describe('boundary test', function () {
 		it('should deeply equal [6, 2, 3, 4, 5]', function () {

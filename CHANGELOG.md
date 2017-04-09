@@ -1,0 +1,1 @@
+Visit [Github Releases](https://github.com/clitetailor/immu-func/releases) page for more infomation.
