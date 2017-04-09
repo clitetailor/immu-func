@@ -20,5 +20,13 @@
   },
   "directories": {
     "test": "test"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clitetailor/immu-func.git"
+  },
+  "bugs": {
+    "url": "https://github.com/clitetailor/immu-func/issues"
+  },
+  "homepage": "https://github.com/clitetailor/immu-func#readme"
 }
