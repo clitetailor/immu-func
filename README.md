@@ -13,6 +13,14 @@ npm install --save immu-func
 Getting Started
 ---------------
 
+### Node
+
+```javascript
+let immu = require('immu-func');
+```
+
+### Babel
+
 ```javascript
 import { setIn } from 'immu-func';
 
@@ -37,6 +45,51 @@ const newStateTree = modifyIn(stateTree, branch, state => assign(state, newState
 
 console.log(newStateTree);
 // => { a: { b: { c: 6 } } }
+```
+
+Polyfill
+--------
+
+```javascript
+import { setIn } from 'immu-func/polyfill';
+
+setIn();
+
+const obj1 = { a: { b: 5 } };
+const obj2 = obj1.setIn(['a', 'b'], 6);
+
+console.log(obj2);
+// => { a: { b: 6 } }
+```
+
+```javascript
+import { all } from 'immu-func/polyfill';
+
+all();
+/* list = [
+	'clone', 'assign', 'setIn', 'modifyIn', 'updateIn',
+	'deepMerge',  'deepUpdate', 'deepEqual',  'setType'
+]
+*/
+
+
+const obj1 = { a: { b: 5 } };
+const obj2 = obj1.setIn(['a', 'b'], 6);
+
+console.log(obj2);
+// => { a: { b: 6 } }
+```
+
+> `ATTENTION`:
+
+```javascript
+const message = {};
+const newMessage = message.setType(Message);
+
+console.log(message.constructor);
+// => Object
+console.log(newMessage.constructor);
+// => Message
 ```
 
 API Reference
