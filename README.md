@@ -38,10 +38,10 @@ import { modifyIn, assign } from 'immu-func';
 
 const stateTree = { a: { b: { c: 5 } } };
 
-const branch = ['a', 'b']
-const newState = { c: 6 }
+const branch = ['a', 'b'];
+const newState = { c: 6 };
 
-const newStateTree = modifyIn(stateTree, branch, state => assign(state, newState))
+const newStateTree = modifyIn(stateTree, branch, state => assign(state, newState));
 
 console.log(newStateTree);
 // => { a: { b: { c: 6 } } }
@@ -67,8 +67,8 @@ import { all } from 'immu-func/polyfill';
 
 all();
 /* list = [
-	'clone', 'set', 'modify', 'assign', 'setIn', 'modifyIn', 'updateIn',
-	'deepMerge',  'deepUpdate',  'deepEqual',  'deepClone',  'setType'
+	'clone',       'modify',  'assign',      'setIn',  'modifyIn',
+	'deepMerge', 'deepUpdate', 'deepEqual', 'deepClone', 'setType'
 ]
 */
 
@@ -96,7 +96,6 @@ API Reference
 -------------
 
 > - [clone](#clone)
-> - [set](#set)
 > - [modify](#modify)
 > - [assign](#assign)
 > - [assignFunc](#assignFunc)
@@ -132,16 +131,6 @@ console.log(obj2);
 
 console.log(obj1 === obj2);
 // => false
-```
-
-### set
-
-```javascript
-const obj1 = { a: 5 }
-const obj2 = set(obj1, 'a', 6);
-
-console.log(obj2);
-// => { a: 6 }
 ```
 
 ### modify
