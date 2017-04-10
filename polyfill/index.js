@@ -2,7 +2,6 @@ let immu = require('../lib');
 
 let list = [
 	'modify',
-	'setAttr',
 	'update',
 	'clone',
 	'assign',

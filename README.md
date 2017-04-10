@@ -186,10 +186,11 @@ console.log(obj2);
 > **alias**: `updateInFunc`
 
 ```javascript
-const obj1 = { a: { b: { c: 5 } } };
-const obj2 = modifyIn(obj1, ['a', 'b', 'c'], c => c + 1);
+// deepEql(this.state, { a: { b: { c: 5 } } }) === true;
 
-console.log(obj2);
+this.setState(modifyInFunc(obj1, ['a', 'b', 'c'], c => c + 1));
+
+console.log(this.state);
 // => { a: { b: { c: 6 } } }
 ```
 
