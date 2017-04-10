@@ -98,16 +98,16 @@ API Reference
 > - [clone](#clone)
 > - [modify](#modify)
 > - [assign](#assign)
-> - [assignFunc](#assignFunc)
-> - [setIn](#setIn)
-> - [setInFunc](#setInFunc)
-> - [modifyIn](#modifyIn)
-> - [modifyInFunc](#modifyInFunc)
-> - [deepMerge](#deepMerge)
-> - [deepEqual](#deepEqual)
-> - [deepClone](#deepClone)
-> - [keyChain](#keyChain)
-> - [setType](#setType)
+> - [assignFunc](#assignfunc)
+> - [setIn](#setin)
+> - [setInFunc](#setinfunc)
+> - [modifyIn](#modifyin)
+> - [modifyInFunc](#modifyinfunc)
+> - [deepMerge](#deepmerge)
+> - [deepEqual](#deepequal)
+> - [deepClone](#deepclone)
+> - [keyChain](#keychain)
+> - [setType](#settype)
 
 
 ### clone
@@ -298,6 +298,17 @@ console.log(deepEqual(obj2, obj3));
 deepEqual(obj1, obj2, (target, source) => {/*...*/})
 ```
 
+### deepClone
+
+```javascript
+const obj1 = {/*...*/}
+const obj2 = deepClone(obj1, obj => {
+	if (isMessage(obj)) {
+		return new Message(obj);
+	}
+})
+```
+
 ### setType
 
 ```javascript
@@ -318,6 +329,7 @@ let state = {
 let newState = setIn(state, ['message', 'content'], "hello world!");
 newState.message = setType(newState.message, Message);
 console.log(newState.message.getContent());
+// => hello world!
 ```
 
 Changelog
