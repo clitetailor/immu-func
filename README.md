@@ -67,8 +67,8 @@ import { all } from 'immu-func/polyfill';
 
 all();
 /* list = [
-	'clone', 'assign', 'setIn', 'modifyIn', 'updateIn',
-	'deepMerge',  'deepUpdate', 'deepEqual',  'setType'
+	'clone', 'set', 'modify', 'assign', 'setIn', 'modifyIn', 'updateIn',
+	'deepMerge',  'deepUpdate',  'deepEqual',  'deepClone',  'setType'
 ]
 */
 
@@ -95,17 +95,20 @@ console.log(newMessage.constructor);
 API Reference
 -------------
 
-> - clone
-> - assign
-> - assignFunc
-> - setIn
-> - setInFunc
-> - modifyIn
-> - modifyInFunc
-> - deepMerge
-> - deepEqual
-> - keyChain
-> - setType
+> - [clone](#clone)
+> - [set](#set)
+> - [modify](#modify)
+> - [assign](#assign)
+> - [assignFunc](#assignFunc)
+> - [setIn](#setIn)
+> - [setInFunc](#setInFunc)
+> - [modifyIn](#modifyIn)
+> - [modifyInFunc](#modifyInFunc)
+> - [deepMerge](#deepMerge)
+> - [deepEqual](#deepEqual)
+> - [deepClone](#deepClone)
+> - [keyChain](#keyChain)
+> - [setType](#setType)
 
 
 ### clone
@@ -129,6 +132,28 @@ console.log(obj2);
 
 console.log(obj1 === obj2);
 // => false
+```
+
+### set
+
+```javascript
+const obj1 = { a: 5 }
+const obj2 = set(obj1, 'a', 6);
+
+console.log(obj2);
+// => { a: 6 }
+```
+
+### modify
+
+> **alias**: `update`
+
+```javascript
+const obj1 = { a: 5 }
+const obj2 = update(obj1, 'a', a => a + 1);
+
+console.log(obj2);
+// => { a: 6 }
 ```
 
 ### setIn

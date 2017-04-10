@@ -1,6 +1,9 @@
 let immu = require('../lib');
 
 let list = [
+	'set',
+	'modify',
+	'update',
 	'clone',
 	'assign',
 	'setIn',
@@ -9,6 +12,7 @@ let list = [
 	'deepMerge',
 	'deepUpdate',
 	'deepEqual',
+	'deepClone',
 	'setType'
 ]
 
@@ -16,12 +20,18 @@ let o = {};
 
 for (let key of list) {
 	o[key] = function () {
-		Object.prototype[key] = function (...args) {
-			return immu[key](this, ...args);
-		}
-		Array.prototype[key] = function (...args) {
-			return immu[key](this, ...args);
-		}
+		Object.defineProperty(Object.prototype, key, {
+			value(...args) {
+				return immu[key](this, ...args);
+			},
+			enumerable: false
+		});
+		Object.defineProperty(Array.prototype, key, {
+			value(...args) {
+				return immu[key](this, ...args);
+			},
+			enumerable: false
+		});
 	}
 }
 
