@@ -3,6 +3,8 @@ ImmuFunc
 
 > Effective functions to keep data structure immutable
 
+[![Build Status](https://travis-ci.org/clitetailor/immu-func.svg?branch=master)](https://travis-ci.org/clitetailor/immu-func)
+
 Install
 -------
 
