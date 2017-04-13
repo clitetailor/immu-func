@@ -97,6 +97,7 @@ API Reference
 
 > - [clone](#clone)
 > - [modify](#modify)
+> - [modifyFunc](#modifyfunc)
 > - [assign](#assign)
 > - [assignFunc](#assignfunc)
 > - [setIn](#setin)
@@ -104,6 +105,7 @@ API Reference
 > - [modifyIn](#modifyin)
 > - [modifyInFunc](#modifyinfunc)
 > - [deepMerge](#deepmerge)
+> - [deepMergeFunc](#deepmergefunc)
 > - [deepEqual](#deepequal)
 > - [deepClone](#deepclone)
 > - [keyChain](#keychain)
@@ -145,6 +147,21 @@ console.log(obj2);
 // => { a: 6 }
 ```
 
+### modifyFunc
+
+> **alias**: `updateFunc`
+
+```javascript
+class App extends React.Component {
+	// ...
+		// deepEqual(this.state, { a: 5 }) === true
+
+		this.setState(updateFunc('a', a => a + 1))
+
+		// deepEqual(this.state, { a: 6 }) === true
+}
+```
+
 ### setIn
 
 ```javascript
@@ -164,8 +181,7 @@ class App extends React.Component {
 		
 		this.setState(setInFunc(['a', 'b', 'c'], 6));
 		
-		console.log(this.state);
-		// => { a: { b: { c: 6 } } }
+		// deepEqual(this.state, { a: { b: { c: 6 } } }) === true
 }
 ```
 
@@ -275,6 +291,28 @@ const obj3 = deepMerge(obj1, obj2, (target, source) => {
 		return target.merge(source);
 	}
 })
+```
+
+### deepMergeFunc
+
+> **alias**: `deepUpdateFunc`
+
+```javascript
+const obj1 = {
+	a: 1,
+	b: [0, 1, 2, { c: 5 }],
+}
+const obj2 = {
+	b: {
+		3: {
+			c: 100,
+		}
+	}
+}
+
+const obj3 = deepMergeFunc(obj2)(obj1);
+console.log(obj3);
+// => { a: 1, b: [ 0, 1, 2, { c: 100 } ] }
 ```
 
 ### deepEqual
