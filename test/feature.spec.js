@@ -3,7 +3,7 @@ const immu = require('../lib')
 should();
 
 
-suite("#main feature tests", function () {
+suite("main features' test", function () {
 	suite("#clone()", function () {
 		test("#1", function () {
 			const obj = { a: 5 }

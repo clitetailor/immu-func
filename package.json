@@ -4,7 +4,7 @@
   "description": "Effective functions to keep data structure immutable",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha -u tdd --reporter=nyan"
+    "test": "mocha -u tdd -R dot"
   },
   "keywords": [
     "immutable",
