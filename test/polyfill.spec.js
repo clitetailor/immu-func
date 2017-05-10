@@ -1,8 +1,6 @@
 const { should, expect } = require('chai')
-const { all } = require('../polyfill')
+require('../polyfill')
 should();
-
-all();
 
 suite('#polyfill test', function () {
 
@@ -94,37 +92,6 @@ suite('#polyfill test', function () {
 			}
 
 			obj1.deepMerge(obj2)
-				.should
-				.deep
-				.equal({
-					a: 234, b: [1, 'x', 3, {
-						c: "ok!"
-					}],
-					d: "abcxyz"
-				});
-		})
-	})
-
-	suite('#deepUpdate()', function () {
-		test("#1", function () {
-			const obj1 = {
-				a: 123,
-				b: [1, 2, 3, {
-					c: "test string"
-				}],
-				d: "abcxyz"
-			}
-			const obj2 = {
-				a: 234,
-				b: {
-					1: 'x',
-					3: {
-						c: "ok!"
-					}
-				}
-			}
-
-			obj1.deepUpdate(obj2)
 				.should
 				.deep
 				.equal({

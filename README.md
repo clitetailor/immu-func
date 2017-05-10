@@ -53,9 +53,7 @@ Polyfill
 --------
 
 ```javascript
-import { setIn } from 'immu-func/polyfill';
-
-setIn();
+import 'immu-func/polyfill';
 
 const obj1 = { a: { b: 5 } };
 const obj2 = obj1.setIn(['a', 'b'], 6);
@@ -65,33 +63,13 @@ console.log(obj2);
 ```
 
 ```javascript
-import { all } from 'immu-func/polyfill';
-
-all();
-/* list = [
-	'clone',       'modify',  'assign',      'setIn',  'modifyIn',
-	'deepMerge', 'deepUpdate', 'deepEqual', 'deepClone', 'setType'
-]
-*/
-
+import 'immu-func/polyfill';
 
 const obj1 = { a: { b: 5 } };
 const obj2 = obj1.setIn(['a', 'b'], 6);
 
 console.log(obj2);
 // => { a: { b: 6 } }
-```
-
-> `ATTENTION`:
-
-```javascript
-const message = {};
-const newMessage = message.setType(Message);
-
-console.log(message.constructor);
-// => Object
-console.log(newMessage.constructor);
-// => Message
 ```
 
 API Reference
@@ -99,18 +77,13 @@ API Reference
 
 > - [clone](#clone)
 > - [modify](#modify)
-> - [modifyFunc](#modifyfunc)
 > - [assign](#assign)
-> - [assignFunc](#assignfunc)
 > - [setIn](#setin)
-> - [setInFunc](#setinfunc)
 > - [modifyIn](#modifyin)
-> - [modifyInFunc](#modifyinfunc)
+> - [keys](#keys)
 > - [deepMerge](#deepmerge)
-> - [deepMergeFunc](#deepmergefunc)
 > - [deepEqual](#deepequal)
 > - [deepClone](#deepclone)
-> - [keyChain](#keychain)
 > - [setType](#settype)
 
 
@@ -149,21 +122,6 @@ console.log(obj2);
 // => { a: 6 }
 ```
 
-### modifyFunc
-
-> **alias**: `updateFunc`
-
-```javascript
-class App extends React.Component {
-	// ...
-		// deepEqual(this.state, { a: 5 }) === true
-
-		this.setState(updateFunc('a', a => a + 1))
-
-		// deepEqual(this.state, { a: 6 }) === true
-}
-```
-
 ### setIn
 
 ```javascript
@@ -172,19 +130,6 @@ const obj2 = setIn(obj1, ['a', 'b', 'c'], 6);
 
 console.log(obj2);
 // => { a: { b: { c: 6 } } }
-```
-
-### setInFunc
-
-```javascript
-class App extends React.Component {
-	// ...
-		// deepEql(this.state, { a: { b: { c: 5 } } }) === true;
-		
-		this.setState(setInFunc(['a', 'b', 'c'], 6));
-		
-		// deepEqual(this.state, { a: { b: { c: 6 } } }) === true
-}
 ```
 
 ### modifyIn
@@ -199,22 +144,7 @@ console.log(obj2);
 // => { a: { b: { c: 6 } } }
 ```
 
-### modifyInFunc
-
-> **alias**: `updateInFunc`
-
-```javascript
-// deepEql(this.state, { a: { b: { c: 5 } } }) === true;
-
-this.setState(modifyInFunc(obj1, ['a', 'b', 'c'], c => c + 1));
-
-console.log(this.state);
-// => { a: { b: { c: 6 } } }
-```
-
-### keyChain
-
-> **alias**: `keys`
+### keys
 
 ```javascript
 console.log(keyChain('a.2.c'));
@@ -240,23 +170,7 @@ console.log(arr3);
 // => [ 0, 1, 2, 3, 1000 ];
 ```
 
-### assignFunc
-
-```javascript
-class App extends React.Component {
-	// ...
-		// deepEql(this.state, { a: 5, b: 6 }) === true;
-		
-		this.setState(assignFunc({ a: 4, c: 8 }));
-		
-		console.log(this.state);
-		// => { a: 4, b: 6, c: 8 }
-}
-```
-
 ### deepMerge
-
-> **alias**: `deepUpdate`
 
 ```javascript
 const obj1 = {
@@ -293,28 +207,6 @@ const obj3 = deepMerge(obj1, obj2, (target, source) => {
 		return target.merge(source);
 	}
 })
-```
-
-### deepMergeFunc
-
-> **alias**: `deepUpdateFunc`
-
-```javascript
-const obj1 = {
-	a: 1,
-	b: [0, 1, 2, { c: 5 }],
-}
-const obj2 = {
-	b: {
-		3: {
-			c: 100,
-		}
-	}
-}
-
-const obj3 = deepMergeFunc(obj2)(obj1);
-console.log(obj3);
-// => { a: 1, b: [ 0, 1, 2, { c: 100 } ] }
 ```
 
 ### deepEqual

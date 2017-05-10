@@ -20,14 +20,6 @@ suite("main features' test", function () {
 		})
 	})
 
-	suite("#modifyFunc()", function () {
-		test("#1", function () {
-			const obj = { a: 5 }
-
-			immu.modifyFunc('a', a => a + 5)(obj).should.deep.equal({ a: 10 })
-		})
-	})
-
 	suite("#update()", function () {
 		test("#1", function () {
 			const obj = { a: 5 }
@@ -36,30 +28,11 @@ suite("main features' test", function () {
 		})
 	})
 
-	suite("#updateFunc()", function () {
-		test("#1", function () {
-			const obj = { a: 5 }
-
-			immu.modifyFunc('a', a => a + 5)(obj).should.deep.equal({ a: 10 })
-		})
-	})
-
 	suite("#setIn()", function () {
 		test("#1", function () {
 			const obj = { a: { b: { c: 10 } } }
 
 			immu.setIn(obj, ['a', 'b', 'c'], 100)
-				.should
-				.deep
-				.equal({ a: { b: { c: 100 } } })
-		})
-	})
-
-	suite("#setInFunc()", function () {
-		test("#1", function () {
-			const obj = { a: { b: { c: 10 } } }
-
-			immu.setInFunc(['a', 'b', 'c'], 100)(obj)
 				.should
 				.deep
 				.equal({ a: { b: { c: 100 } } })
@@ -77,17 +50,6 @@ suite("main features' test", function () {
 		})
 	})
 
-	suite("#modifyInFunc()", function () {
-		test("#1", function () {
-			const obj = { a: { b: { c: 10 } } }
-
-			immu.modifyInFunc(['a', 'b', 'c'], c => c + 90)(obj)
-				.should
-				.deep
-				.equal({ a: { b: { c: 100 } } });
-		})
-	})
-
 	suite("#updateIn()", function () {
 		test("#1", function () {
 			const obj = { a: { b: { c: 10 } } }
@@ -97,18 +59,6 @@ suite("main features' test", function () {
 				.deep
 				.equal({ a: { b: { c: 100 } } });
 		})
-	})
-
-	suite("#updateInFunc()", function () {
-		test("#1", function () {
-			const obj = { a: { b: { c: 10 } } }
-
-			immu.updateInFunc(['a', 'b', 'c'], c => c + 90)(obj)
-				.should
-				.deep
-				.equal({ a: { b: { c: 100 } } });
-		})
-
 	})
 
 	suite("#keys()", function () {
@@ -125,36 +75,11 @@ suite("main features' test", function () {
 		})
 	})
 
-	suite("#keyChain()", function () {
-		test("#1", function () {
-			const _keys = '1.2.3.4';
-
-			immu.keyChain(_keys).should.deep.equal(['1', '2', '3', '4']);
-		})
-
-		test("#2", function () {
-			const _keys = 'a.1.b.2';
-
-			immu.keyChain(_keys).should.deep.equal(['a', '1', 'b', '2']);
-		})
-	})
-
 	suite("#assign()", function () {
 		test("#1", function () {
 			const obj = { a: 1, b: "test string", c: [1, 2, 3] };
 
 			immu.assign(obj, { a: 5, c: [2, 3] })
-				.should
-				.deep
-				.equal({ a: 5, b: "test string", c: [2, 3] })
-		})
-	})
-
-	suite("#assignFunc()", function () {
-		test("#1", function () {
-			const obj = { a: 1, b: "test string", c: [1, 2, 3] };
-
-			immu.assignFunc({ a: 5, c: [2, 3] })(obj)
 				.should
 				.deep
 				.equal({ a: 5, b: "test string", c: [2, 3] })
@@ -181,99 +106,6 @@ suite("main features' test", function () {
 			}
 
 			immu.deepMerge(obj1, obj2)
-				.should
-				.deep
-				.equal({
-					a: 234, b: [1, 'x', 3, {
-						c: "ok!"
-					}],
-					d: "abcxyz"
-				});
-		})
-	})
-
-	suite("#deepMergeFunc()", function () {
-		test("#1", function () {
-			const obj1 = {
-				a: 123,
-				b: [1, 2, 3, {
-					c: "test string"
-				}],
-				d: "abcxyz"
-			}
-			const obj2 = {
-				a: 234,
-				b: {
-					1: 'x',
-					3: {
-						c: "ok!"
-					}
-				}
-			}
-
-			immu.deepMergeFunc(obj2)(obj1)
-				.should
-				.deep
-				.equal({
-					a: 234, b: [1, 'x', 3, {
-						c: "ok!"
-					}],
-					d: "abcxyz"
-				});
-		})
-	})
-
-	suite("#deepUpdate()", function () {
-		test("#1", function () {
-			const obj1 = {
-				a: 123,
-				b: [1, 2, 3, {
-					c: "test string"
-				}],
-				d: "abcxyz"
-			}
-			const obj2 = {
-				a: 234,
-				b: {
-					1: 'x',
-					3: {
-						c: "ok!"
-					}
-				}
-			}
-
-			immu.deepUpdate(obj1, obj2)
-				.should
-				.deep
-				.equal({
-					a: 234, b: [1, 'x', 3, {
-						c: "ok!"
-					}],
-					d: "abcxyz"
-				});
-		})
-	})
-
-	suite("#deepUpdateFunc()", function () {
-		test("#1", function () {
-			const obj1 = {
-				a: 123,
-				b: [1, 2, 3, {
-					c: "test string"
-				}],
-				d: "abcxyz"
-			}
-			const obj2 = {
-				a: 234,
-				b: {
-					1: 'x',
-					3: {
-						c: "ok!"
-					}
-				}
-			}
-
-			immu.deepUpdateFunc(obj2)(obj1)
 				.should
 				.deep
 				.equal({
