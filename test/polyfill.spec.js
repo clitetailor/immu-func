@@ -1,5 +1,5 @@
 const { should, expect } = require('chai')
-require('../lib/polyfill')
+require('../polyfill')
 should();
 
 suite('#polyfill test', function () {
