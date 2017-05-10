@@ -1,5 +1,5 @@
 const { should, expect } = require('chai')
-require('../polyfill')
+require('../lib/polyfill')
 should();
 
 suite('#polyfill test', function () {
@@ -148,28 +148,59 @@ suite('#polyfill test', function () {
 
 	suite('#setType()', function () {
 
-		class Message {
-			constructor(content) {
-				this.content = "chocolatey"
-			}
-
-			getContent() {
-				return this.content;
-			}
-		}
-
 		test("#1", function () {
+			class Message {
+				constructor(content) {
+					this.content = "chocolatey"
+				}
+
+				getContent() {
+					return this.content;
+				}
+			}
+
 			const obj = {}
 			
 			obj.setType(Message).constructor.should.equal(Message);
 		})
 
 		test("#2", function () {
+			class Message {
+				constructor(content) {
+					this.content = "chocolatey"
+				}
+
+				getContent() {
+					return this.content;
+				}
+			}
+			
 			const obj = { content: "ok!" }
 			
 			obj.setType(Message).getContent()
 				.should
 				.equal("ok!")
+		})
+
+		test('#3', function () {
+			class MArray extends Array {
+				replace(matcher, replacer) {
+					return this.reduce((acc, next, i, arr) => {
+						if (matcher(next, i, arr)) {
+							return acc.concat(replacer(next, i, arr));
+						}
+						else {
+							return acc.concat([next]);
+						}
+					}, []).setType(MArray);
+				}
+			}
+
+			const arr = [1, "string", 4, 5, 6, "string"];
+			arr.setType(MArray)
+				.replace(item => item === "string",
+					(value, i, arr) => [2, 3])
+				.should.deep.equal([1, 2, 3, 4, 5, 6, 2, 3].setType(MArray))
 		})
 	})
 })
