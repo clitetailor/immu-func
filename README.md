@@ -134,7 +134,7 @@ console.log(obj2);
 
 ```javascript
 const obj1 = { a: { b: { c: 5 } } };
-const obj2 = modifyIn(obj1, ['a', 'b', 'c'], c => c + 1);
+const obj2 = updateIn(obj1, ['a', 'b', 'c'], c => c + 1);
 
 console.log(obj2);
 // => { a: { b: { c: 6 } } }
@@ -143,7 +143,7 @@ console.log(obj2);
 ### keys
 
 ```javascript
-console.log(keyChain('a.2.c'));
+console.log(keys('a.2.c'));
 // => [ 'a', 2, 'c' ]
 ```
 
