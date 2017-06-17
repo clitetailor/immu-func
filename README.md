@@ -76,10 +76,10 @@ API Reference
 -------------
 
 > - [clone](#clone)
-> - [modify](#modify)
+> - [update](#update)
 > - [assign](#assign)
 > - [setIn](#setin)
-> - [modifyIn](#modifyin)
+> - [updateIn](#updatein)
 > - [keys](#keys)
 > - [deepMerge](#deepmerge)
 > - [deepEqual](#deepequal)
@@ -110,9 +110,7 @@ console.log(obj1 === obj2);
 // => false
 ```
 
-### modify
-
-> **alias**: `update`
+### update
 
 ```javascript
 const obj1 = { a: 5 }
@@ -132,9 +130,7 @@ console.log(obj2);
 // => { a: { b: { c: 6 } } }
 ```
 
-### modifyIn
-
-> **alias**: `updateIn`
+### updateIn
 
 ```javascript
 const obj1 = { a: { b: { c: 5 } } };
