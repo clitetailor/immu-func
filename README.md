@@ -43,7 +43,7 @@ const stateTree = { a: { b: { c: 5 } } };
 const branch = ['a', 'b'];
 const newState = { c: 6 };
 
-const newStateTree = modifyIn(stateTree, branch, state => assign(state, newState));
+const newStateTree = updateIn(stateTree, branch, state => assign(state, newState));
 
 console.log(newStateTree);
 // => { a: { b: { c: 6 } } }
