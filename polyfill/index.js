@@ -1,16 +1,15 @@
 let immu = require('../lib');
 
 let list = [
-	'modify',
-	'update',
 	'clone',
+	'update',
 	'assign',
 	'setIn',
-	'modifyIn',
 	'updateIn',
 	'deepMerge',
 	'deepEqual',
 	'deepClone',
+	'completeAssign',
 	'setType'
 ]
 

@@ -18,19 +18,6 @@ suite('#persistence test', function () {
 		})
 	})
 
-	suite('#modify()', function () {
-		test("#1", function () {
-			const obj1 = { a: 5, b: { c: 6 }, d: "test string!" }
-			const obj2 = immu.modify(obj1, 'd', d => "ok!");
-
-			obj2.should.not.equal(obj1);
-			obj2.d.should.not.equal(obj1.d);
-			obj2.a.should.equal(obj1.a);
-			obj2.b.should.equal(obj1.b);
-			obj2.b.c.should.equal(obj1.b.c);
-		})		
-	})
-
 	suite('#update()', function () {
 		test("#1", function () {
 			const obj1 = { a: 5, b: { c: 6 }, d: "test string" }
@@ -68,21 +55,6 @@ suite('#persistence test', function () {
 			obj2.b.should.not.equal(obj1.b);
 			obj2.b.c.should.not.equal(obj1.b.c);
 			obj2.b.c.d.should.equal(100);
-		})
-	})
-
-	suite('#modifyIn()', function () {
-		test("#1", function () {
-			const obj1 = { a: 5, b: { c: { d: 6 }, e: 5 }, f: "test string" }
-			const obj2 = immu.modifyIn(obj1, ['b', 'e'], e => e + 5);
-
-			obj2.should.not.equal(obj1);
-			obj2.a.should.equal(obj1.a);
-			obj2.f.should.equal(obj1.f);
-			obj2.b.c.should.equal(obj1.b.c);
-			obj2.b.c.d.should.equal(obj1.b.c.d);
-			obj2.b.e.should.not.equal(obj1.b.e);
-			obj2.b.e.should.equal(10);
 		})
 	})
 

@@ -12,14 +12,6 @@ suite('#polyfill test', function () {
 		})
 	})
 
-	suite('#modify()', function () {
-		test("#1", function () {
-			const obj = { a: 5 }
-
-			obj.modify('a', a => a + 1).should.deep.equal({ a: 6 })
-		})
-	})
-
 	suite('#update()', function () {
 		test("#1", function () {
 			const obj = { a: 5 }
@@ -47,17 +39,6 @@ suite('#polyfill test', function () {
 				.should
 				.deep
 				.equal({ a: { b: { c: 100 } } })
-		})
-	})
-
-	suite('#modifyIn()', function () {
-		test("#1", function () {
-			const obj = { a: { b: { c: 10 } } }
-
-			obj.modifyIn(['a', 'b', 'c'], c => c + 90)
-				.should
-				.deep
-				.equal({ a: { b: { c: 100 } } });
 		})
 	})
 
